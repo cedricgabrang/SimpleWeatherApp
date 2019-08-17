@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SimpleWeatherApp.MainPage"
+             xmlns:Local="clr-namespace:SimpleWeatherApp"
+             Title="Simple Weather App">
+
+    <StackLayout Padding="10" Spacing="10">
+        <StackLayout.BindingContext>
+            <Local:WeatherViewModel/>
+        </StackLayout.BindingContext>
+        
+        <StackLayout Orientation="Horizontal">
+            
+            <Entry Text="{Binding Keyword}"
+                   Placeholder="Type here..."
+                   HorizontalOptions="FillAndExpand"></Entry>
+
+            <Button Text="SEARCH"
+                    Command="{Binding CitySearchCommand}"></Button>
+
+        </StackLayout>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>
+
+        <Label Text="City Information"
+                   FontAttributes="Bold"
+                   FontSize="Large"></Label>
+
+        <Label Text="{Binding DisplayMessage}"
+                   FontSize="Medium"></Label>
+
+        <Label Text="Weather Condition"
+                   FontAttributes="Bold"
+                   FontSize="Large"></Label>
+
+        <Label Text="{Binding DisplayWeatherMessage}"
+                   FontSize="Medium"></Label>
+
+    </StackLayout>
+
+</ContentPage>
